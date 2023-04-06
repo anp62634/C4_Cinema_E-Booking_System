@@ -1,4 +1,4 @@
-/*package org.example.model;
+package org.example.model;
 
 import jakarta.persistence.*;
 
@@ -57,7 +57,7 @@ public class Movie {
         this.trailerPic = trailerPic;
         this.trailerVid = trailerVid;
         this.runtime = runtime;
-        //this.mpaa = mpaa;
+        this.mpaa = mpaa;
     }
 
     public int getMovieID() {
@@ -174,5 +174,3 @@ public class Movie {
                 '}';
     }
 }
-
- */

@@ -1,4 +1,4 @@
-/*package org.example.model;
+package org.example.model;
 
 import jakarta.persistence.*;
 
@@ -42,4 +42,4 @@ public class UserType {
                 ", typeName='" + typeName + '\'' +
                 '}';
     }
-}*/
+}

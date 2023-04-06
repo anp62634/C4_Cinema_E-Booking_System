@@ -21,18 +21,18 @@ public class User {
     private String state;
     private String zip;
 
-    /*
+
     @ManyToOne
     @JoinColumn(name = "typeID")
     private UserType userType;
-
+/*
     @ManyToOne
     @JoinColumn(name = "statusID")
     private Status status;
     */
     public User() {}
 
-    public User(String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip/*, UserType userType, Status status*/) {
+    public User(String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip, UserType userType/*, Status status*/) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -43,11 +43,11 @@ public class User {
         this.city = city;
         this.state = state;
         this.zip = zip;
-        //this.userType = userType;
+        this.userType = userType;
         //this.status = status;
     }
 
-    /*
+
     public int getUserID() {
         return userID;
     }
@@ -55,7 +55,7 @@ public class User {
     public void setUserID(int userID) {
         this.userID = userID;
     }
-     */
+
     public String getFirstName() {
         return firstName;
     }
@@ -136,7 +136,7 @@ public class User {
         this.zip = zip;
     }
 
-    /*
+
     public UserType getUserType() {
         return userType;
     }
@@ -144,7 +144,7 @@ public class User {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
-
+/*
     public Status getStatus() {
         return status;
     }
@@ -167,7 +167,7 @@ public class User {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
-                //", userType=" + userType +
+                ", userType=" + userType +
                 //", status=" + status +
                 '}';
     }

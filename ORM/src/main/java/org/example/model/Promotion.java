@@ -1,4 +1,4 @@
-/*package org.example.model;
+package org.example.model;
 
 import jakarta.persistence.*;
 
@@ -53,4 +53,3 @@ public class Promotion {
         return "Promotion [promoID=" + promoID + ", name=" + name + ", discount=" + discount + "]";
     }
 }
-*/

@@ -5,16 +5,18 @@ import Footer from "./Footer"
 import { Button } from '@mui/material';
 
 function RegistrationPage() {
-
     const[firstName, setFirstName]=useState('');
     const[lastName, setLastName]=useState('');
     const[email, setEmail]=useState('');
     const[password, setPassword]=useState('');
     const[phone, setPhone]=useState('');
+    const[enrolledForPromo, setEnrollForPromo]=useState(0);
+    const [checked, setChecked] = useState(false); 
+    
 
     const handleClick=(e)=>{
         e.preventDefault()
-        const user={firstName, lastName, email, password, phone}
+        const user={firstName, lastName, email, password, phone, enrolledForPromo}
         console.log(user)
         fetch("http://localhost:8080/user/add", {
             method:"POST",
@@ -23,8 +25,12 @@ function RegistrationPage() {
         }).then(()=>{
             console.log("New User Added")
         })
-
     }
+
+    const handleSubscribe = () => { 
+        setChecked(!checked); 
+        setEnrollForPromo(checked ? 0 : 1)
+      };
 
     return (
         <React.Fragment>
@@ -73,7 +79,8 @@ function RegistrationPage() {
                         <h3> </h3>
                         <div className="input-group">
                             <label htmlFor="subscribe">Subscribe To Promotions?</label>
-                            <input type="checkbox" name="subscribe"/>
+                            <input type="checkbox" name="subscribe" onChange={handleSubscribe}/>
+                            
                         </div>
                         <p></p>
                             <Button variant="contained" color="secondary" onClick={handleClick}>Submit</Button>

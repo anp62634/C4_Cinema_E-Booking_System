@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AdminNavBar from './Components/Admin/AdminNavBar';
 import './style.css';
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 
-const PROMOS =[
+/*const PROMOS =[
     {
         id: 0,
         name: "Spring Discount",
@@ -11,18 +11,19 @@ const PROMOS =[
         code: "SPRING2023",
         status: 0
     }
-];
+];*/
 
 export default function ManagePromotions() {
 
-    const[selectPromo, setSelectPromo] = useState("");
+    //const[promotion, setPromotion]=useState('');
     const[name, setName]=useState('');
     const[discount, setDiscount]=useState('');
     const[promoCode, setPromoCode]=useState('');
+    const[promos, setPromos]=useState([]);
 
-    const handlePromo = (event) => {
-        setSelectPromo(event.target.value);
-    };
+    //const handlePromo = (event) => {
+    //    setSelectPromo(event.target.value);
+    //}
 
     const handleClick=(e)=>{
             e.preventDefault()
@@ -38,40 +39,31 @@ export default function ManagePromotions() {
 
         }
 
+    useEffect(()=>{
+        fetch("http://localhost:8080/promotion/getAll")
+        .then(res=>res.json())
+        .then((result)=>{
+            setPromos(result);
+        })
+    },[])
+
     return (
         <React.Fragment>
             {/* Admin Nav Bar */}
             <AdminNavBar/>
             <div className="manage-promos">
                 <div className="admin-view">
-                    {/* Displays Current Promotions */}
                     <div className="promo-options">
                         <h1>Current Promotions</h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Amount</th>
-                                    <th>Code</th>
-                                    <th>Status</th>
-                                    <th>Options</th>
-                                </tr>
-                            </thead>
-                            {PROMOS.map((promo, index) =>
-                            <tr>
-                                <th>{promo.name}</th>
-                                <th>{promo.discount}</th>
-                                <th>{promo.code}</th>
-                                {promo.status === 0 && (
-                                <th>Not Sent</th>
-                                )}
-                                {promo.status === 1 && (
-                                <th>Sent</th>
-                                )}
-                                <th><button>Edit</button><button>Delete</button></th>
-                            </tr>                                
-                            )}    
-                        </table>               
+                        {promos.map(promotion=>(
+                            <Paper elevation={6} style={{margin:"10px", textAlign:"left"}} key={promotion.promoID}>
+                                Name: {promotion.name},
+                                Discount: {promotion.discount},
+                                Promo: {promotion.promoCode}
+                            </Paper>
+                            ))
+                        }
+                        <button>Edit</button><button>Delete</button>
                     </div>
                 </div>
                 <div className="admin-view">
@@ -98,24 +90,36 @@ export default function ManagePromotions() {
                         </div>
                     </div>
                 </div>
-                <div className="admin-view">
-                    <div className="promo-options">
-                        {/* Sends Promos to Users who Opt-ed to get them */}
-                        <h1>Send Promotion</h1>
-                        {PROMOS.map((promo, index) => (
-                        <div className="select-promo">
-                            <select onChange={handlePromo} className="select-input">
-                                <option value="">Select Promo</option>
-                                {PROMOS.map((promo, index) =>
-                                    <option value={promo.name}>{promo.name}</option>
-                                )}
-                            </select>
-                                <input type="submit" value="Send"/>
-                        </div>
-                        ))}
-                    </div>
-                </div>
             </div>
         </React.Fragment>
     );
 }
+
+/*
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Code</th>
+                                    <th>Status</th>
+                                    <th>Options</th>
+                                    </tr>
+                                    </thead>
+                                    {selectPromos.map(selectPromo=>
+                                    <tr key={selectPromo.promoID}>
+                                        <th>{selectPromo.name}</th>
+                                        <th>{selectPromo.discount}</th>
+                                        <th>{selectPromo.promoCode}</th>
+                                        {selectPromo.status === 0 && (
+                                        <th>Not Sent</th>
+                                        )}
+                                        {selectPromo.status === 1 && (
+                                        <th>Sent</th>
+                                        )
+                                        <th><button>Edit</button><button>Delete</button></th>
+                                    </tr>                                
+                                    )}    
+                                </table> 
+
+*/

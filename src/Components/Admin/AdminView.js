@@ -17,6 +17,7 @@ export default function AdminView() {
                 <p></p>
                 <div className="admin-options">
                     <Link to="managemovies"><h3>Manage Movies</h3></Link>
+                    <Link to="manageusers"><h3>Manage Users</h3></Link>
                     <Link to="managepromotions"><h3>Manage Promotions</h3></Link>
                 </div>
             </div>

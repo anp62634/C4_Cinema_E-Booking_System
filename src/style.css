@@ -26,7 +26,6 @@ header {
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-
 }
 
 /* affects poster-slide*/
@@ -98,7 +97,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px rgba(0, 0, 0, 0.26);
   color: white;
 }
 
@@ -412,11 +411,12 @@ th, td {
   position: absolute;
   top: 60px;
   right: 0;
+  margin-right: 3px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s;
-
+  z-index: 999;
 }
 
 .dropdown.active {
@@ -439,7 +439,7 @@ th, td {
 .dropdown li a {
   text-decoration: none;
   color: #333333;
-  padding: 15px 20px;
+  padding: 15px 10px;
   display: block;
 }
 

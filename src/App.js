@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
 import { AuthContext } from './auth-context';
 import BrowseMovies from "./BrowseMovies";
@@ -12,8 +12,9 @@ import MovieInfo2 from "./MovieInfo2";
 import BookTickets from './Components/BookingPage.js'
 import AdminLogin from './Components/Admin/AdminLogin.js';
 import AdminView from "./Components/Admin/AdminView";
-import ManageMovies from "./ManageMovies";
-import ManagePromotions from "./ManagePromotions";
+import ManageMovies from "./Components/Admin/ManageMovies.js";
+import ManageUsers from "./Components/Admin/ManageUsers.js";
+import ManagePromotions from "./Components/Admin/ManagePromotions.js";
 import DeleteSuccess from "./DeleteSuccess";
 import UpdateSuccess from "./UpdateSuccess";
 import AddMovieSuccess from "./AddMovieSuccess";
@@ -36,7 +37,20 @@ function App() {
       setIsLoggedIn(false);
   }, []);
 
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:8000/message")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  }, []);
+
   return (
+    // this shows it is pulling from the backend
+    <React.Fragment>
+      <div className="App">
+        <h1>{message}</h1>
+      </div>
       <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}>
         <Routes>
           <Route path="/" element={<Homepage/>}/>
@@ -55,6 +69,7 @@ function App() {
             <Route path="/editmovie/currentlyshowing/:movieName" element={<EditMovie/>} />
             <Route path="/editmovie/comingsoon/:movieName" element={<EditMovie2/>} />
             <Route path="adminview/managepromotions" element={<ManagePromotions/>} />
+            <Route path="adminview/manageusers" element={<ManageUsers/>} />
             <Route path="adminview/managemovies/deletesuccess" element={<DeleteSuccess/>} />
             <Route path="adminview/managemovies/updatesuccess" element={<UpdateSuccess/>} />
             <Route path="adminview/managemovies/addmoviesuccess" element={<AddMovieSuccess/>} />
@@ -62,6 +77,7 @@ function App() {
             <Route path="/booktickets/checkout/confirmation" element={<CheckoutConfirmation/>} />
         </Routes>
       </AuthContext.Provider>
+      </React.Fragment>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import AdminNavBar from './Components/Admin/AdminNavBar';
 import './style.css';
+import { Button } from '@mui/material';
 
 const PROMOS =[
     {
@@ -13,10 +14,29 @@ const PROMOS =[
 ];
 
 export default function ManagePromotions() {
-    const [selectPromo, setSelectPromo] = useState("");
+
+    const[selectPromo, setSelectPromo] = useState("");
+    const[name, setName]=useState('');
+    const[discount, setDiscount]=useState('');
+    const[promoCode, setPromoCode]=useState('');
+
     const handlePromo = (event) => {
         setSelectPromo(event.target.value);
     };
+
+    const handleClick=(e)=>{
+            e.preventDefault()
+            const promotion={name, discount, promoCode}
+            console.log(promotion)
+            fetch("http://localhost:8080/promotion/add", {
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(promotion)
+            }).then(()=>{
+                console.log("New Promotion Added")
+            })
+
+        }
 
     return (
         <React.Fragment>
@@ -62,17 +82,18 @@ export default function ManagePromotions() {
                             <form className="form">
                                 <div className="input-group">
                                     <label htmlFor="name">Promo Name</label>
-                                    <input type="text" name="name" placeholder="Promo Name" required/>
+                                    <input type="text" name="name" placeholder="Promo Name" value={name} onChange={(e)=>setName(e.target.value)} required/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="discount">Promo Discount</label>
-                                    <input type="number" name="discount" placeholder="e.g 20%" required/>
+                                    <input type="number" min="0" max="1" step="0.01" name="discount" placeholder="e.g 0.25" value={discount} onChange={(e)=>setDiscount(e.target.value)} required/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="code">Promo Code</label>
-                                    <input type="text" name="code" placeholder="PROMOCODE" required/>
+                                    <input type="text" name="promoCode" placeholder="PROMOCODE" value={promoCode} onChange={(e)=>setPromoCode(e.target.value)} required/>
                                 </div>
-                                <input type="submit" value="Submit"/>
+                                <p></p>
+                                <Button variant="contained" color="secondary" onClick={handleClick}>Submit</Button>
                             </form>
                         </div>
                     </div>

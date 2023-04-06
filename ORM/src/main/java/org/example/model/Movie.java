@@ -40,13 +40,15 @@ public class Movie {
     @Column(name = "runtime")
     private double runtime;
 
+
+
     @ManyToOne
     @JoinColumn(name = "mpaaID")
     private MPAA mpaa;
 
     public Movie() {}
 
-    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String trailerPic, String trailerVid, double runtime, MPAA mpaa) {
+    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String trailerPic, String trailerVid ,double runtime , MPAA mpaa) {
         this.title = title;
         this.genre = genre;
         this.cast = cast;
@@ -56,9 +58,11 @@ public class Movie {
         this.reviews = reviews;
         this.trailerPic = trailerPic;
         this.trailerVid = trailerVid;
-        this.runtime = runtime;
-        this.mpaa = mpaa;
+       this.runtime = runtime;
+        //this.mpaa = mpaa;
+
     }
+
 
     public int getMovieID() {
         return movieID;
@@ -174,3 +178,4 @@ public class Movie {
                 '}';
     }
 }
+

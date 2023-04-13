@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import TrailerModal from "../TrailerModal";
 import "../style.css"
-import { Link } from "react-router-dom";
 
 export default function MovieCard(movie) {
 
@@ -56,9 +56,11 @@ export default function MovieCard(movie) {
                 </div>
 
                  {/* Button to book tickets */}
-                 <div className="movie-btn">
+                 <div>
                     {movie.items.shown && (
-                        <Link to={`/book-tickets/${movie.items.id}/${movie.items.name}`}>BOOK TICKETS</Link>
+                        <div className="movie-btn">
+                            <Link to={`/booktickets/${movie.items.linkName}`}>BOOK TICKETS</Link>
+                        </div>
                     )}
 
                     {/* Displays to user if movie is coming soon */}

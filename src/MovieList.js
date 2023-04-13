@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './MovieList.css'
 import TrailerModal from './TrailerModal';
 import "./style.css";
 
@@ -41,13 +40,19 @@ export default function MovieList(props) {
             {/* Buttons to see Movie Trailer or Book Tickets */}
             <div>
               {/* Button for the trailer modal view */}
-              <TrailerModal
-              trailer={movie.trailer}
-              name={movie.name}
-              />
-              <div></div>
-              {/* Button to book tickets */}
-              {movie.shown && (<Link className="book-tickets-linkbutton" to={`/booktickets/${movie.linkName}`}>BOOK TICKETS</Link>)}
+              <div className='movie-btn'>
+                <TrailerModal
+                trailer={movie.trailer}
+                name={movie.name}
+                />
+              </div>
+              
+              {/* Button to book tickets being shown */}
+                {movie.shown && (
+                  <div className='movie-btn'>
+                    <Link className="book-tickets-linkbutton" to={`/booktickets/${movie.linkName}`}>BOOK TICKETS</Link>
+                  </div>
+                )}
             </div>
           </div>
         ))}

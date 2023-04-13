@@ -1,15 +1,12 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import NavBar from './NavBar.js';
-import '../style.css';
 import Footer from "./Footer"
-
+import '../style.css';
 
 function EditProfilePage() {
     return (
         <React.Fragment>
             <NavBar/>
-            <div className="registration-page">
                 <div className="auth">
                     <h1>Edit Profile</h1>
                     <form className="form">
@@ -24,7 +21,8 @@ function EditProfilePage() {
                             <label htmlFor="phone-number">Change Telephone Number</label>
                             <input type="text" name="phone-number" placeholder="1234567890" required/>
                         </div>
-                        <p></p>
+                        <br/>
+
                         <div className="input-group">
                             <h3>Edit Card Info</h3>
                             <label htmlFor="card-type">Change Card Type</label>
@@ -36,7 +34,8 @@ function EditProfilePage() {
                             <label htmlFor="security-number">Change Expiration Date</label>
                             <input type="month" name="card-number" placeholder="MM/YY"/>
                         </div>
-                        <p></p>
+                        <br/>
+
                         <div className="input-group">
                             <h3>Edit Shipping Address</h3>
                             <label htmlFor="street">Change Street</label>
@@ -48,18 +47,19 @@ function EditProfilePage() {
                             <label htmlFor="zip">Change Zip Code</label>
                             <input type="text" name="zip" placeholder="Ex: 00000"/>
                         </div>
-                        <h3> </h3>
+                        <br/>
+
                         <div className="input-group">
                             <label htmlFor="subscribe">Subscribe To Promotions?</label>
                             <input type="checkbox" name="subscribe"/>
                         </div>
-                        <p></p>
+                        <br/>
+
                         <input type="submit" value="Submit"></input>
                     </form>
                     {/* need make into a button and add to the form yes or no answer */}                    
-                    <h1> </h1>
+                    <br/>
                 </div>
-            </div>
             <Footer/>
         </React.Fragment>
     );

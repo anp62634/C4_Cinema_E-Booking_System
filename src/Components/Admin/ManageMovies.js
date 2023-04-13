@@ -3,7 +3,6 @@ import {Link, useNavigate} from 'react-router-dom';
 import { Movies } from '../../MovieSamples';
 import AdminNavBar from './AdminNavBar';
 import '../../style.css';
-import '../../BrowseMovies.css';
 
 export default function ManageMovies() { 
     // For Showing Movies

@@ -1,3 +1,4 @@
+/*----- General -----*/
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,7 +20,7 @@ code {
     monospace;
 }
 
-/*affects poster-slide*/
+/*----- Homepage -----*/
 header {
   max-width: auto;
   width: 100%;
@@ -28,7 +29,6 @@ header {
   overflow: hidden;
 }
 
-/* affects poster-slide*/
 .poster-slider {
   margin-top: 40px;
   display: flex;
@@ -71,9 +71,67 @@ header {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
 }
 
-.auth {
-  margin-top: 40px;
+/*----- Home Page Movie List -----*/
+.movie-content {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  margin: 5px 100px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 300px;
+  height: 420px;
+}
+
+.movie-item p {
+  padding-top: 0;
+  margin: 10px;
+}
+
+.movie-item h3 {
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.movie-item img {
+  align-items: center;
+  width: 210px;
+  height: 300px;
+}
+
+.movie-btn {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.movie-item .movie-btn {
+  width: 140px;
+}
+
+.book-tickets-linkbutton {
+  font-size: 14px;
+  color: white;
+  margin: 15px 0px;
+  text-decoration: none;
+}
+
+/*----- Login Page, Registration Page, Edit Profile -----*/
+.auth {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 40px;
   margin-left: 30%;
   margin-right: 30%;
   border-style: groove;
@@ -92,6 +150,17 @@ header {
   border-radius: 10px;
 }
 
+.form label, input {
+  display: flex;
+  flex-direction: column;
+} 
+
+.login-links {
+  color: white;
+  padding: 10px 0px;
+}
+
+/*----- Navigation Bar -----*/
 nav {
   width: 100%;
   display: flex;
@@ -127,6 +196,10 @@ nav h1 a{
   text-decoration: none;
 }
 
+.search-btn {
+  color: gray;
+}
+
 .search-img {
   float: left;
   padding: 5px;
@@ -136,13 +209,83 @@ nav h1 a{
   border: 1px solid grey;
 }
 
-.logoutButton {
-  color: white;
-  font-size: 16px;
-  background-color: transparent;
-  border: none;
+/*----- Navigation Bar Drop Down Menu -----*/
+.menu-dropdown {
+  position: relative;
+  background-color: none;
 }
 
+.dropdown {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  margin-right: 3px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s;
+  z-index: 999;
+}
+
+.dropdown.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown li {
+  border-bottom: 1px solid #dddddd;
+}
+
+.dropdown li a {
+  text-decoration: none;
+  color: #333333;
+  padding: 15px 10px;
+  display: block;
+}
+
+.dropdown-trigger {
+  background: none;
+  color: white;
+  border-radius: 80px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  border: none;
+  vertical-align: middle;
+  transition: box-shadow 0.4s ease;
+}
+
+.dropdown-trigger:hover {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-trigger span {
+  font-weight: 700;
+  vertical-align: middle;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.dropdown-trigger img {
+  border-radius: 90px;
+  height: 30px;
+  width: 30px;
+  padding: 0px 0px 0px 8px;
+}
+
+/*----- Browse Movies -----*/
 .search-bar {
   text-align: center;
   width: 95%;
@@ -154,19 +297,66 @@ nav h1 a{
   border-radius: 10px;
 }
 
+.browse-movies {
+  margin: 50px;
+  align-items: center;
+}
+
+.movie-search {
+  padding: 0px 0px 10px 70px;
+}
+
+form.movie-search input[type=text] {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid grey;
+  float: left;
+  width: 35%;
+}
+
+form.movie-search button, .search-btn {
+  float: left;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.filter-option {
+  padding-left: 100px;
+  float: left;
+}
+
+.search-list {
+  padding: 20px 50px;
+  list-style: none;
+  text-align: center;
+}
+
+.search-list a {
+  text-decoration: none;
+  color: white;
+}
+
+.search-listItem {
+  margin: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
+  padding: 20px;
+}
+
+
 .no-movies, h2 {
-  display: inline-block;
+  display: block;
   padding: 20px;
   margin: 10px;
 } 
 
-
-/* affects the trailermodal/movielist watch trailer and book tickets buttons*/
+/*----- Trailer Modal -----*/
 .individual-movie-buttons {
   background: transparent;
   border: none;
   color:white; 
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .modal {
@@ -251,6 +441,7 @@ nav h1 a{
   }
 }
 
+/*----- Movie Card -----*/
 .movie-card {
   display: flex;
   flex-direction: row;
@@ -275,11 +466,12 @@ nav h1 a{
   height: 280px;
 }
 
-.movie-btn a {
+.movie-row-items .movie-btn {
   padding: 10px;
   color: white;
   text-decoration: none;
   font-size: 14px;
+  width: 150px;
 }
 
 .movie-card a {
@@ -287,14 +479,23 @@ nav h1 a{
   font-size: 14px;
 }
 
-.book-tickets-linkbutton {
-  font-size: 14px;
-  color: white;
-  margin: 15px 0px;
+@media screen and (max-width: 1080px) {
+  .movie-card {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .movie-row-items2 {
+    text-align: center;
+  }
 }
+
+
 
 .footer {
   color: white;
+  box-shadow: 0 -5px 10px -5px rgba(0, 0, 0, 0.26);
+  padding: 5px;
 }
 
 .footer a{
@@ -345,7 +546,6 @@ nav h1 a{
 
 .filter-movie-seating {
   display: flexbox;
-
 }
 
 .book-tickets-confirmation-link {
@@ -398,81 +598,4 @@ th, td {
 
 .selectPromo {
   margin-left: 8%;
-}
-
-.menu-dropdown {
-  position: relative;
-  background-color: none;
-}
-
-.dropdown {
-  background: #ffffff;
-  border-radius: 8px;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  margin-right: 3px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s;
-  z-index: 999;
-}
-
-.dropdown.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.dropdown ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown li {
-  border-bottom: 1px solid #dddddd;
-}
-
-.dropdown li a {
-  text-decoration: none;
-  color: #333333;
-  padding: 15px 10px;
-  display: block;
-}
-
-.dropdown-trigger {
-  background: none;
-  color: white;
-  border-radius: 80px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 15px;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border: lightgray 1px solid; */
-  border: none;
-  vertical-align: middle;
-  transition: box-shadow 0.4s ease;
-}
-
-.dropdown-trigger:hover {
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown-trigger span {
-  font-weight: 700;
-  vertical-align: middle;
-  font-size: 14px;
-  margin: 0 10px;
-}
-
-.dropdown-trigger img {
-  border-radius: 90px;
-  height: 30px;
-  width: 30px;
-  padding: 0px 0px 0px 8px;
 }

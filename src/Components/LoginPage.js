@@ -4,6 +4,7 @@ import NavBar from './NavBar.js';
 import { AuthContext } from '../auth-context.js';
 import '../style.css';
 import Footer from "./Footer"
+import { Button } from '@mui/material';
 
 
 function LoginPage() {
@@ -19,7 +20,6 @@ function LoginPage() {
     return (
         <React.Fragment>
             <NavBar/>
-            <div className="login">
                 <div className="auth">
                     <h1>Login</h1>
                     <form className="form" onSubmit={handleSubmit}>
@@ -27,20 +27,21 @@ function LoginPage() {
                             <label htmlFor="email">Email</label>
                             <input type="email" name="email" placeholder="name@gmail.com" required/>
                         </div>
-                        <p></p>
+                        <br/>
+
                         <div className="input-group">
                             <label htmlFor="password">Password</label>
                             <input type="password" name="password" placeholder="password123" required/>
                         </div>
-                        <input type="submit" value="Login"/>
+                        <br/>
+
+                        <Button variant="contained" color="secondary" type="submit" value="Login">Login</Button>
                     </form>
-                    <h3> </h3>
-                    <Link to="/registrationpage" exact>Don't have an account? Register here</Link>
-                    <h3> </h3>
-                    <Link to="/registrationpage" exact>Forgot Password?</Link>
-                    <h1> </h1>
+                    <br/>
+                    
+                    <Link to="/registrationpage" className="login-links" exact>Don't have an account? Register here</Link>
+                    <Link to="/registrationpage" className="login-links" exact>Forgot Password?</Link>
                 </div>
-            </div>
             <Footer/>
         </React.Fragment>
     );

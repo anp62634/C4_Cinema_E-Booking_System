@@ -39,13 +39,11 @@ export default function NavBar() {
                 {!auth.isLoggedIn && (
                 <ul className="nav-links">
                     <li><NavLink to="/loginpage" exact>Login</NavLink></li>
-                   
                     <li><NavLink to="/registrationpage" exact>Signup</NavLink></li>
-                    
                 </ul>
                 )}
 
-                {/* Drop Down Menu */}
+                {/* Drop Down Menu for Logged-In User*/}
                 {auth.isLoggedIn && (
                 <div className='menu-dropdown'>
                     <button onClick={dropDownClick} className="dropdown-trigger">
@@ -54,12 +52,8 @@ export default function NavBar() {
                     </button>
                     <nav ref={dropDownRef} className={`dropdown ${isActive ? 'active' : 'inactive'}`}>
                     <ul className="nav-links">
-                        
                             <li><NavLink to="/editprofile" exact>Edit Profile</NavLink></li>
-                        
-                       
-                            <li><NavLink to="#" onClick={auth.logout}>Logout</NavLink></li>
-                        
+                            <li><NavLink to="/" onClick={auth.logout}>Logout</NavLink></li>
                     </ul>
                     </nav>
                  </div>

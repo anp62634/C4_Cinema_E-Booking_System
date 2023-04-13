@@ -490,8 +490,25 @@ form.movie-search button, .search-btn {
   }
 }
 
+/*----- Booking Page -----*/
+.theater-layout {
+  display: grid;
+  justify-content: center;
+}
 
+.filter-movie-seating {
+  display: flexbox;
+}
 
+.book-tickets-confirmation-link {
+  color:white;
+}
+
+.book-tickets-cancellation-link {
+  color: white;
+}
+
+/*----- Footer -----*/
 .footer {
   color: white;
   box-shadow: 0 -5px 10px -5px rgba(0, 0, 0, 0.26);
@@ -502,6 +519,11 @@ form.movie-search button, .search-btn {
   color: white;
 }
 
+/*---------------------------*/
+/*-----      ADMIN      -----*/
+/*---------------------------*/
+
+/*----- Admin View -----*/
 .admin-view {
   display: inline-block;
   text-align: center;
@@ -525,6 +547,7 @@ form.movie-search button, .search-btn {
   text-decoration: none;
 }
 
+/*----- Manage Movies -----*/
 .add-movie {
   padding: 0;
   margin-top: 20px;
@@ -538,24 +561,7 @@ form.movie-search button, .search-btn {
   margin: 0;
 }
 
-
-.theater-layout {
-  display: grid;
-  justify-content: center;
-}
-
-.filter-movie-seating {
-  display: flexbox;
-}
-
-.book-tickets-confirmation-link {
-  color:white;
-}
-
-.book-tickets-cancellation-link {
-  color: white;
-}
-
+/*----- Manage Promotions -----*/
 .manage-promos {
   display: flex;
   align-items: center;

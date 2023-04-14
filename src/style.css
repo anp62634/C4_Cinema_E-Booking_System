@@ -490,6 +490,37 @@ form.movie-search button, .search-btn {
   }
 }
 
+/*----- Movie Info Page -----*/
+.movie-info {
+  padding: 50px 100px;
+  display: flex;
+}
+
+.movie-info-row {
+  padding: 35px;
+}
+
+.movie-info-col {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-info-row img {
+  width: 300px;
+  height: 450px;
+}
+
+.movie-info-text {
+  text-align: left;
+  padding: 10px;
+}
+
+.movie-info .movie-btn {
+  padding: 8px;
+  width: 150px;
+  justify-content: center;
+}
+
 /*----- Booking Page -----*/
 .theater-layout {
   display: grid;

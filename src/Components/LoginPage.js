@@ -14,7 +14,7 @@ function LoginPage() {
     const handleSubmit = (e) =>{ 
         e.preventDefault();
         auth.login();
-        navigate('/homepage');
+        navigate('/');
     }
 
     return (

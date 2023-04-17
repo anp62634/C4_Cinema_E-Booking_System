@@ -26,7 +26,6 @@ function RegistrationPage() {
         setEnrolledForPromo(enrolledForPromo ? 0 : 1);
     }
 
-
     async function submit(e) {
         e.preventDefault();
         try {
@@ -108,7 +107,7 @@ function RegistrationPage() {
                             <input type="checkbox" name="subscribe" onChange={handleSubscription}/>
                         </div>
                         <p></p>
-                        <input type="submit" value="Register"/>
+                        <input onClick={submit} type="submit" value="Register"/>
                     </form>
                     <h1> </h1>
                 </div>

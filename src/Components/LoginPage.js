@@ -58,7 +58,7 @@ function LoginPage() {
                             <label htmlFor="password">Password</label>
                             <input type="password" name="password" placeholder="password123" value={password} onChange={(e)=>{setPassword(e.target.value);}} required/>
                         </div>
-                        <input type="submit" value="Login"/>
+                        <input onClick={login} type="submit" value="Login"/>
                     </form>
                     <h3> </h3>
                     <Link to="/registrationpage" exact>Don't have an account? Register here</Link>

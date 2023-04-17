@@ -31,11 +31,11 @@ public class Movie {
     @Column(name = "reviews")
     private String reviews;
 
-    @Column(name = "trailerPic")
-    private String trailerPic;
+    @Column(name = "poster")
+    private String poster;
 
-    @Column(name = "trailerVid")
-    private String trailerVid;
+    @Column(name = "trailer")
+    private String trailer;
 
     @Column(name = "runtime")
     private double runtime;
@@ -49,7 +49,7 @@ public class Movie {
 
     public Movie() {}
 
-    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String trailerPic, String trailerVid ,double runtime, boolean isShowing, MPAA mpaa) {
+    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String poster, String trailer ,double runtime, boolean isShowing, MPAA mpaa) {
         this.title = title;
         this.genre = genre;
         this.cast = cast;
@@ -57,8 +57,8 @@ public class Movie {
         this.producer = producer;
         this.synopsis = synopsis;
         this.reviews = reviews;
-        this.trailerPic = trailerPic;
-        this.trailerVid = trailerVid;
+        this.poster = poster;
+        this.trailer = trailer;
         this.runtime = runtime;
         this.isShowing = isShowing;
         this.mpaa = mpaa;
@@ -128,20 +128,20 @@ public class Movie {
         this.reviews = reviews;
     }
 
-    public String getTrailerPic() {
-        return trailerPic;
+    public String getPoster() {
+        return poster;
     }
 
-    public void setTrailerPic(String trailerPic) {
-        this.trailerPic = trailerPic;
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
-    public String getTrailerVid() {
-        return trailerVid;
+    public String getTrailer() {
+        return trailer;
     }
 
-    public void setTrailerVid(String trailerVid) {
-        this.trailerVid = trailerVid;
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 
     public double getRuntime() {
@@ -175,8 +175,8 @@ public class Movie {
                 ", producer='" + producer + '\'' +
                 ", synopsis='" + synopsis + '\'' +
                 ", reviews='" + reviews + '\'' +
-                ", trailerPic='" + trailerPic + '\'' +
-                ", trailerVid='" + trailerVid + '\'' +
+                ", poster='" + poster + '\'' +
+                ", trailer='" + trailer + '\'' +
                 ", runtime=" + runtime +
                 ", isShowing=" + isShowing +
                 ", mpaa=" + mpaa +

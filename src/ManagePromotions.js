@@ -3,27 +3,12 @@ import AdminNavBar from './Components/Admin/AdminNavBar';
 import './style.css';
 import { Button, Paper } from '@mui/material';
 
-/*const PROMOS =[
-    {
-        id: 0,
-        name: "Spring Discount",
-        discount: 20,
-        code: "SPRING2023",
-        status: 0
-    }
-];*/
-
 export default function ManagePromotions() {
 
-    //const[promotion, setPromotion]=useState('');
     const[name, setName]=useState('');
     const[discount, setDiscount]=useState('');
     const[promoCode, setPromoCode]=useState('');
     const[promos, setPromos]=useState([]);
-
-    //const handlePromo = (event) => {
-    //    setSelectPromo(event.target.value);
-    //}
 
     const handleClick=(e)=>{
             e.preventDefault()

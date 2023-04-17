@@ -5,7 +5,6 @@ import BrowseMovies from "./BrowseMovies";
 import LoginPage from './Components/LoginPage.js';
 import SignUpPage from './Components/RegistrationPage.js';
 import Homepage from './Components/Homepage.js';
-import RegConfirmPage from './Components/RegConfirmPage.js';
 import EditProfilePage from './Components/EditProfilePage.js';
 import MovieInfo from './MovieInfo.js';
 import MovieInfo2 from "./MovieInfo2";
@@ -44,7 +43,6 @@ function App() {
             <Route path="adminlogin" element={<AdminLogin/>} />
             <Route path="loginpage" element={<LoginPage/>} />
             <Route path="registrationpage" element={<SignUpPage/>} />
-            <Route path="registrationsuccess" element={<RegConfirmPage/>} />
             <Route path="editprofile" element={<EditProfilePage/>} />
             <Route path="/currentlyshowing/movieinfo/:movieName" element={<MovieInfo/>} />
             <Route path="/comingsoon/movieinfo/:movieName" element={<MovieInfo2/>} />

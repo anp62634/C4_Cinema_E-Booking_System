@@ -6,6 +6,8 @@ export default function AddMovie() {
     const navigate = useNavigate();
 
     const[title, setTitle]=useState('');
+    const[trailer, setTrailer]=useState('');
+    const[poster, setPoster]=useState('');
    // const[mpaa, setMpaa]=useState('');
     const[genre, setGenre]=useState('');
     const[cast, setCast]=useState('');
@@ -27,7 +29,7 @@ export default function AddMovie() {
      
     const confirmAddHandler = (e) => {
         e.preventDefault()
-        const movie={title, genre, cast, director, producer, desc, isShowing, runtime}
+        const movie={title, genre, cast, director, producer, desc, isShowing, runtime, poster, trailer}
         console.log(movie)
         fetch("http://localhost:8080/movie/add", {
             method:"POST",
@@ -48,6 +50,10 @@ export default function AddMovie() {
                     <h3>Add Movie Information</h3>
                     <label htmlFor="movie-name">Movie Name</label>
                     <input type="text" name="movie-name" value={title} onChange={(e)=>setTitle(e.target.value)} required/>
+                    <label htmlFor="movie-poster">Movie Poster</label>
+                    <input type="text" name="movie-poster" value={poster} onChange={(e)=>setPoster(e.target.value)} required/>
+                    <label htmlFor="movie-trailer">Movie Trailer</label>
+                    <input type="text" name="movie-trailer" value={trailer} onChange={(e)=>setTrailer(e.target.value)} required/>
                     <label htmlFor="movie-rating">Movie Rating</label>
                     <input type="text" name="movie-rating" placeholder="" /**value={mpaa} onChange={(e)=>setMpaa(e.target.value)} *//>
                     <label htmlFor="movie-category">Movie Category</label>

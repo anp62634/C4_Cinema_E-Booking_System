@@ -1,15 +1,15 @@
 package org.example.response;
 
-public class LoginResponse {
+public class UserResponse {
     String message;
     Boolean status;
 
-    public LoginResponse(String message, Boolean status) {
+    public UserResponse(String message, Boolean status) {
         this.message = message;
         this.status = status;
     }
 
-    public LoginResponse() {
+    public UserResponse() {
     }
 
     public String getMessage() {

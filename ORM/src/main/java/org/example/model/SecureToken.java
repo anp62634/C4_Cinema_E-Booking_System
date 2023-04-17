@@ -1,2 +1,4 @@
-package org.example.model;public class SecureToken {
+package org.example.model;
+
+public class SecureToken {
 }

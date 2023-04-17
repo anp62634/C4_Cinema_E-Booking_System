@@ -40,7 +40,8 @@ public class Movie {
     @Column(name = "runtime")
     private double runtime;
 
-
+    @Column(name = "isShowing")
+    private boolean isShowing;
 
     @ManyToOne
     @JoinColumn(name = "mpaaID")
@@ -48,7 +49,7 @@ public class Movie {
 
     public Movie() {}
 
-    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String trailerPic, String trailerVid ,double runtime , MPAA mpaa) {
+    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String trailerPic, String trailerVid ,double runtime, boolean isShowing, MPAA mpaa) {
         this.title = title;
         this.genre = genre;
         this.cast = cast;
@@ -58,11 +59,10 @@ public class Movie {
         this.reviews = reviews;
         this.trailerPic = trailerPic;
         this.trailerVid = trailerVid;
-       this.runtime = runtime;
-        //this.mpaa = mpaa;
-
+        this.runtime = runtime;
+        this.isShowing = isShowing;
+        this.mpaa = mpaa;
     }
-
 
     public int getMovieID() {
         return movieID;
@@ -160,6 +160,10 @@ public class Movie {
         this.mpaa = mpaa;
     }
 
+    public boolean getIsShowing() { return isShowing; }
+
+    public void setIsShowing(int showing) { this.isShowing = isShowing; }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -174,6 +178,7 @@ public class Movie {
                 ", trailerPic='" + trailerPic + '\'' +
                 ", trailerVid='" + trailerVid + '\'' +
                 ", runtime=" + runtime +
+                ", isShowing=" + isShowing +
                 ", mpaa=" + mpaa +
                 '}';
     }

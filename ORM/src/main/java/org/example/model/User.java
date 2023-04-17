@@ -7,32 +7,55 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="userID")
+    // should generation type be identity or auto
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userID;
 
+    @Column(name="firstName")
     private String firstName;
+
+    @Column(name="lastName")
     private String lastName;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="password")
     private String password;
+
+    @Column(name="phone")
     private String phone;
+
+    @Column(name="enrolledForPromo")
     private boolean enrolledForPromo;
+
+    @Column(name="address")
     private String address;
+
+    @Column(name="city")
     private String city;
+
+    @Column(name="state")
     private String state;
+
+    @Column(name="zip")
     private String zip;
 
-
+    /*
     @ManyToOne
     @JoinColumn(name = "typeID")
     private UserType userType;
-/*
-    @ManyToOne
-    @JoinColumn(name = "statusID")
-    private Status status;
     */
-    public User() {}
 
-    public User(String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip, UserType userType/*, Status status*/) {
+    //@Column(name = "active")
+    //private boolean active;
+
+    public User() {
+    }
+
+    public User(int userID, String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip/*, boolean active*/) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -43,10 +66,8 @@ public class User {
         this.city = city;
         this.state = state;
         this.zip = zip;
-        this.userType = userType;
-        //this.status = status;
+        //this.active = active;
     }
-
 
     public int getUserID() {
         return userID;
@@ -136,7 +157,12 @@ public class User {
         this.zip = zip;
     }
 
+    //public boolean isActive() { return active; }
 
+    //public void setActive(boolean status) { this.active = active;}
+
+
+    /*
     public UserType getUserType() {
         return userType;
     }
@@ -144,14 +170,7 @@ public class User {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
-/*
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }*/
+    */
 
     @Override
     public String toString() {
@@ -167,8 +186,7 @@ public class User {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
-                ", userType=" + userType +
-                //", status=" + status +
+                //", active=" + active +
                 '}';
     }
 }

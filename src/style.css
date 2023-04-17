@@ -151,12 +151,14 @@ header {
 }
 
 .form label, input {
+  text-align: center;
   display: flex;
   flex-direction: column;
 } 
 
 .login-links {
   color: white;
+  text-align: center;
   padding: 10px 0px;
 }
 

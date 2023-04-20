@@ -22,12 +22,12 @@ function LoginPage() {
                 password: password,
             }).then((res) => {
                 console.log(res.data);
-                if (res.data.message == "Email Does Not Exist") {
+                if (res.data.message === "Email Does Not Exist") {
                     alert("Email Does Not Exist");
-                } else  if (res.data.message == "Password Does Not Match"){
+                } else  if (res.data.message === "Password Does Not Match"){
                     alert("Password Does Not Match");
                 }
-                else if (res.data.message == "Login Success") {
+                else if (res.data.message === "Login Success") {
                     auth.login();
                     navigate("/");
                 } else {
@@ -58,13 +58,15 @@ function LoginPage() {
                             <label htmlFor="password">Password</label>
                             <input type="password" name="password" placeholder="password123" value={password} onChange={(e)=>{setPassword(e.target.value);}} required/>
                         </div>
-                        <input onClick={login} type="submit" value="Login"/>
+                        <br/>
+                        <button onClick={login} type="submit" value="Login" className='auth-btn'><b>Login</b></button> 
+                        <br/>
                     </form>
-                    <h3> </h3>
-                    <Link to="/registrationpage" exact>Don't have an account? Register here</Link>
-                    <h3> </h3>
-                    <Link to="/registrationpage" exact>Forgot Password?</Link>
-                    <h1> </h1>
+                    <br/>
+                    <Link to="/registrationpage" className="login-links" exact>Don't have an account? Register here</Link>
+                    <br/>
+                    <Link to="/registrationpage" className="login-links" exact>Forgot Password?</Link>
+                    <br/>
                 </div>
             </div>
             <Footer/>

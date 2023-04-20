@@ -2,6 +2,9 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "MPAA")
 public class MPAA {
@@ -13,6 +16,9 @@ public class MPAA {
 
     @Column(name = "mpaaRating", nullable = false)
     private String mpaaRating;
+
+    @OneToMany(mappedBy="mpaa")
+    private Set<Movie> movie = new HashSet<Movie>();
 
     // Constructors
     public MPAA() {}

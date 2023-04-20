@@ -1,6 +1,7 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import org.hibernate.engine.internal.Cascade;
 
 @Entity
 @Table(name = "Movie")
@@ -40,16 +41,16 @@ public class Movie {
     @Column(name = "runtime")
     private double runtime;
 
-    @Column(name = "isShowing")
-    private boolean isShowing;
+    @Column(name = "showing")
+    private boolean showing;
 
-    @ManyToOne
-    @JoinColumn(name = "mpaaID")
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "mpaaID", nullable=false)
     private MPAA mpaa;
 
     public Movie() {}
 
-    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String poster, String trailer ,double runtime, boolean isShowing, MPAA mpaa) {
+    public Movie(String title, String genre, String cast, String director, String producer, String synopsis, String reviews, String poster, String trailer ,double runtime, boolean showing, MPAA mpaa) {
         this.title = title;
         this.genre = genre;
         this.cast = cast;
@@ -60,7 +61,7 @@ public class Movie {
         this.poster = poster;
         this.trailer = trailer;
         this.runtime = runtime;
-        this.isShowing = isShowing;
+        this.showing = showing;
         this.mpaa = mpaa;
     }
 
@@ -160,9 +161,13 @@ public class Movie {
         this.mpaa = mpaa;
     }
 
-    public boolean getIsShowing() { return isShowing; }
+    public boolean isShowing() {
+        return showing;
+    }
 
-    public void setIsShowing(int showing) { this.isShowing = isShowing; }
+    public void setShowing(boolean showing) {
+        this.showing = showing;
+    }
 
     @Override
     public String toString() {
@@ -178,7 +183,7 @@ public class Movie {
                 ", poster='" + poster + '\'' +
                 ", trailer='" + trailer + '\'' +
                 ", runtime=" + runtime +
-                ", isShowing=" + isShowing +
+                ", showing=" + showing +
                 ", mpaa=" + mpaa +
                 '}';
     }

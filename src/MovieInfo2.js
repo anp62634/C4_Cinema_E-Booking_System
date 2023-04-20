@@ -55,8 +55,11 @@ export default function MovieInfo2() {
                     <div className="movie-info-text">
                         <h1>{movie.title}</h1>
                         <p><b>Rated {movie.mpa.mpaRating}</b></p>
-                        <p><b>{movie.genre}</b></p>
-                        <p>{movie.synopsis}</p>
+                        <p><b>Genre:</b> {movie.genre}</p>
+                        <p><b>Cast:</b> {movie.cast}</p>
+                        <p><b>Director:</b> {movie.director}</p>
+                        <p><b>Producer:</b> {movie.producer}</p>
+                        <p><i>{movie.synopsis}</i></p>
                     </div>
                     <div className="movie-info-col">
                         <div className="movie-btn">

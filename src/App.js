@@ -5,7 +5,6 @@ import BrowseMovies from "./BrowseMovies";
 import LoginPage from './Components/LoginPage.js';
 import SignUpPage from './Components/RegistrationPage.js';
 import Homepage from './Components/Homepage.js';
-import RegConfirmPage from './Components/RegConfirmPage.js';
 import EditProfilePage from './Components/EditProfilePage.js';
 import MovieInfo from './MovieInfo.js';
 import MovieInfo2 from "./MovieInfo2";
@@ -15,9 +14,7 @@ import AdminView from "./Components/Admin/AdminView";
 import ManageMovies from "./Components/Admin/ManageMovies.js";
 import ManageUsers from "./Components/Admin/ManageUsers.js";
 import ManagePromotions from "./Components/Admin/ManagePromotions.js";
-import DeleteSuccess from "./DeleteSuccess";
 import UpdateSuccess from "./UpdateSuccess";
-import AddMovieSuccess from "./AddMovieSuccess";
 import EditMovie from "./EditMovie";
 import EditMovie2 from "./EditMovie2";
 import AddMovie from "./AddMovie";
@@ -58,10 +55,9 @@ function App() {
             <Route path="adminlogin" element={<AdminLogin/>} />
             <Route path="loginpage" element={<LoginPage/>} />
             <Route path="registrationpage" element={<SignUpPage/>} />
-            <Route path="registrationsuccess" element={<RegConfirmPage/>} />
             <Route path="editprofile" element={<EditProfilePage/>} />
-            <Route path="/currentlyshowing/movieinfo/:movieName" element={<MovieInfo/>} />
-            <Route path="/comingsoon/movieinfo/:movieName" element={<MovieInfo2/>} />
+            <Route path="/currentlyshowing/movieinfo/:movieTitle" element={<MovieInfo/>} />
+            <Route path="/comingsoon/movieinfo/:movieTitle" element={<MovieInfo2/>} />
             <Route path="/booktickets/:movieName" element={<BookTickets/>} />
             <Route path="adminview" element={<AdminView/>} />
             <Route path="adminview/managemovies" element={<ManageMovies/>} />
@@ -70,9 +66,7 @@ function App() {
             <Route path="/editmovie/comingsoon/:movieName" element={<EditMovie2/>} />
             <Route path="adminview/managepromotions" element={<ManagePromotions/>} />
             <Route path="adminview/manageusers" element={<ManageUsers/>} />
-            <Route path="adminview/managemovies/deletesuccess" element={<DeleteSuccess/>} />
             <Route path="adminview/managemovies/updatesuccess" element={<UpdateSuccess/>} />
-            <Route path="adminview/managemovies/addmoviesuccess" element={<AddMovieSuccess/>} />
             <Route path="/booktickets/checkout" element={<Checkout/>} />
             <Route path="/booktickets/checkout/confirmation" element={<CheckoutConfirmation/>} />
         </Routes>

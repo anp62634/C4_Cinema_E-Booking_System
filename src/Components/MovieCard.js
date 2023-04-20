@@ -1,4 +1,4 @@
-import React from "react";
+import React, {UseState} from "react";
 import { Link } from "react-router-dom";
 import TrailerModal from "../TrailerModal";
 import "../style.css"

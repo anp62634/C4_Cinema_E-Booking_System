@@ -1,9 +1,22 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import NavBar from './NavBar.js';
 import Footer from "./Footer"
 import '../style.css';
 
 function EditProfilePage() {
+    const navigate = useNavigate();
+
+    const cancelEditHandler = () => {
+        console.log('Edit Profile Canceled...');
+        navigate('/');
+    };
+
+    const confirmEditHandler = () => {
+        console.log('Profile Information Updated...');
+        navigate('/');
+    };
+
     return (
         <React.Fragment>
             <NavBar/>
@@ -55,9 +68,10 @@ function EditProfilePage() {
                         </div>
                         <br/>
 
-                        <input type="submit" value="Submit"></input>
-                    </form>
-                    {/* need make into a button and add to the form yes or no answer */}                    
+                        {/* Cancel or Save Info Button */}
+                        <button inverse onClick={cancelEditHandler} className='auth-btn'><b>Cancel</b></button>
+                        <button type="submit" onClick={confirmEditHandler} className='auth-btn'><b>Save</b></button>
+                    </form>               
                     <br/>
                 </div>
             <Footer/>

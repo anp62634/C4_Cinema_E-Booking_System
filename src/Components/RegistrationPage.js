@@ -3,7 +3,7 @@ import NavBar from './NavBar.js';
 import '../style.css';
 import Footer from "./Footer"
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function RegistrationPage() {
 
@@ -42,7 +42,7 @@ function RegistrationPage() {
                 enrolledForPromo: enrolledForPromo
             }).then((res) => {
                 console.log(res.data);
-                if (res.data.message == "Registration Success") {
+                if (res.data.message === "Registration Success") {
                     navigate("/loginpage");
                 } else {
                     alert("Registration Failed");
@@ -107,7 +107,7 @@ function RegistrationPage() {
                             <input type="checkbox" name="subscribe" onChange={handleSubscription}/>
                         </div>
                         <p></p>
-                        <input onClick={submit} type="submit" value="Register"/>
+                        <button onClick={submit} type="submit" value="Register" className='auth-btn'><b>Register</b></button>
                     </form>
                     <h1> </h1>
                 </div>

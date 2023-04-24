@@ -107,7 +107,7 @@ function RegistrationPage() {
                             <input type="checkbox" name="subscribe" onChange={handleSubscription}/>
                         </div>
                         <p></p>
-                        <input onClick={submit} type="submit" value="Register" /*className='auth-btn'*//>
+                        <input onClick={submit} type="submit" value="Register"/>
                     </form>
                     <h1> </h1>
                 </div>

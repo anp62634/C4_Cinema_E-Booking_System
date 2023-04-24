@@ -59,7 +59,7 @@ function LoginPage() {
                             <input type="password" name="password" placeholder="password123" value={password} onChange={(e)=>{setPassword(e.target.value);}} required/>
                         </div>
                         <br/>
-                        <input onClick={login} type="submit" value="Login" className='auth-btn'/>
+                        <input onClick={login} type="submit" value="Login"/>
                         <br/>
                     </form>
                     <br/>

@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieList from '../MovieList'
 import NavBar from './NavBar';
 import Footer from './Footer';
-import { Movies} from '../MovieSamples';
 import '../style.css';
 
 export default function Homepage() {
+    const [movies, setMovies] = useState([]);
+
+    useEffect(()=>{
+        fetch("http://localhost:8080/movie/getAll")
+        .then(res=>res.json())
+        .then((result)=>{
+            setMovies(result);
+    })},[])
+
     return (
         <React.Fragment>
             <NavBar />
@@ -23,17 +31,17 @@ export default function Homepage() {
                     </div>
                 </div>
             </header>
-
-            {/* Currently Showing Section */}
+           
             <div className="categories">
+                {/* Currently Showing Section */}
                 <h1>Currently Showing</h1> 
-                <MovieList/>
+                <MovieList isShowing={true}/> 
             </div>
 
-            {/* Coming Soon Section */}
             <div className="categories">
-                <h1>Coming Soon</h1>
-                <MovieList/>
+                {/* Coming Soon Section */}
+                <h1>Coming Soon</h1> 
+                <MovieList isShowing={false}/>
             </div>
             <Footer/>
         </React.Fragment>

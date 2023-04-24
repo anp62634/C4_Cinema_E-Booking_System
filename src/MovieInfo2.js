@@ -17,9 +17,9 @@ export default function MovieInfo2() {
     const trailer =useState('');
     const showing = useState(false);
     const runtime = useState(0.0);
-    const mpa = useState('');
+    const mpaa = useState('');
     const [movies,setMovies] = useState([]);
-    const movie = {title, mpa, genre, cast, director, producer, synopsis, poster, trailer, showing, runtime}
+    const movie = {title, mpaa, genre, cast, director, producer, synopsis, poster, trailer, showing, runtime}
   
     useEffect(()=>{
         fetch("http://localhost:8080/movie/getAll")
@@ -54,7 +54,7 @@ export default function MovieInfo2() {
                 <div className="movie-info-row">
                     <div className="movie-info-text">
                         <h1>{movie.title}</h1>
-                        <p><b>Rated {movie.mpa.mpaRating}</b></p>
+                        <p><b>Rated {movie.mpaa.mpaaRating}</b></p>
                         <p><b>Genre:</b> {movie.genre}</p>
                         <p><b>Cast:</b> {movie.cast}</p>
                         <p><b>Director:</b> {movie.director}</p>

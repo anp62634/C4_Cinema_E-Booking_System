@@ -58,7 +58,7 @@ function App() {
             <Route path="editprofile" element={<EditProfilePage/>} />
             <Route path="/currentlyshowing/movieinfo/:movieTitle" element={<MovieInfo/>} />
             <Route path="/comingsoon/movieinfo/:movieTitle" element={<MovieInfo2/>} />
-            <Route path="/booktickets/:movieName" element={<BookTickets/>} />
+            <Route path="/booktickets/:movieTitle" element={<BookTickets/>} />
             <Route path="adminview" element={<AdminView/>} />
             <Route path="adminview/managemovies" element={<ManageMovies/>} />
             <Route path="adminview/managemovies/addmovie" element={<AddMovie/>} />

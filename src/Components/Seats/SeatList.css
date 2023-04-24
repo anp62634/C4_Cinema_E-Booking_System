@@ -7,11 +7,29 @@
     padding: 10px;
 }
 
-.seat-item {
-    padding: 20px;
+.seat-item-na{
+    padding: 15px;
+    width: 50px;
+    color:black;
+    background-color: rgb(169, 176, 172);
+    border: solid;
+    border-radius: 10px;
+}
+
+.seat-item{
+    padding: 15px;
     width: 50px;
     color:black;
     background-color: white;
-    border: none;
+    border: solid;
+    border-radius: 10px;
+}
+
+.seat-item-selected {
+    padding: 15px;
+    width: 50px;
+    color:black;
+    background-color: lightgreen;
+    border: solid;
     border-radius: 10px;
 }

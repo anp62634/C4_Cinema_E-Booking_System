@@ -3,21 +3,8 @@ import { Link } from 'react-router-dom';
 import TrailerModal from './TrailerModal';
 import "./style.css";
 
-export default function MovieList() {
-
-  const title = useState('');
-  const genre =useState('');
-  const cast = useState('');
-  const director = useState('');
-  const producer = useState('');
-  const synopsis = useState('');
-  const poster = useState('');
-  const trailer =useState('');
-  const showing = useState(false);
-  const runtime = useState(0.0);
-  const mpa = useState('');
+export default function MovieList(props) {
   const [movies,setMovies] = useState([]);
-  const movie = {title, mpa, genre, cast, director, producer, synopsis, poster, trailer, showing, runtime}
 
   useEffect(()=>{
       fetch("http://localhost:8080/movie/getAll")
@@ -27,24 +14,16 @@ export default function MovieList() {
       })
   },[])
 
-
-  // If no movies are found
-  /*if (movies.items.length === 0) {
-    return (
-      <div className="no-movies">
-          <h2>No movies found.</h2>
-      </div>
-    );
-  }*/
+  const loadMovie = movies.filter(movie => movie.showing === props.isShowing);
 
   //Display for movies being shown
   return (
     <React.Fragment>
       <div className="movie-content">
-        {movies.map(movie => (
+        {loadMovie.map(movie => (
           <div key={movie.id} className="movie-item">
             <h3>{movie.title}</h3>
-            <p>{movie.mpa.mpaRating}</p>
+            <p>{movie.mpaa.mpaaRating}</p>
             {movie.showing && (
               <Link to={`/currentlyshowing/movieinfo/${movie.title}`}>
                 <img src={movie.poster} alt={movie.title}/>
@@ -63,7 +42,7 @@ export default function MovieList() {
                 />
               </div>
               {/* Button to book tickets being shown */}
-                {movie.showing === "true" && (
+                {movie.showing && (
                   <div className='movie-btn'>
                     <Link className="book-tickets-linkbutton" to={`/booktickets/${movie.title}`}>BOOK TICKETS</Link>
                   </div>

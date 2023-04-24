@@ -7,7 +7,7 @@ export const Movies = {
         trailer: 'https://www.youtube.com/embed/ELeMaP8EPAA',
         rating: "R",
         category: ['Comedy', 'Drama'],
-        cast: 'Leonardo DiCaprio, Brad Pitt, Marogt Robbie, Kurt Russell',
+        cast: 'Leonardo DiCaprio, Brad Pitt, Margot Robbie, Kurt Russell',
         director: 'Quentin Tarantino',
         producer: 'David Heyman, Shannon McIntosh, Quentin Tarantino',
         description: 'Actor Rick Dalton gained fame and fortune by starring in a 1950s television Western, but is now struggling to find meaningful work in a Hollywood that he does not recognize anymore. He spends most of his time drinking and palling around with Cliff Booth, his easygoing best friend and longtime stunt double. Rick also happens to live next door to Roman Polanski and Sharon Tate, the filmmaker and budding actress whose futures will forever be altered by members of the Manson Family.',

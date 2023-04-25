@@ -15,6 +15,10 @@ public interface UserService {
 
     UserResponse loginUser(LoginDTO loginDTO);
 
+    public UserResponse editUser(UserDTO userDTO);
+
     public List<User> getAllUsers();
+
+   // public UserResponse deleteUser(User user);
 
 }

@@ -21,6 +21,8 @@ public class UserServiceImp implements UserService{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private User currentUser = null;
+
     @Override
     public UserResponse addUser(UserDTO userDTO) {
         User user = new User(
@@ -56,7 +58,7 @@ public class UserServiceImp implements UserService{
     @Override
     public UserResponse loginUser(LoginDTO loginDTO) {
         String message = "";
-        User currentUser = userRepository.findByEmail(loginDTO.getEmail());
+        currentUser = userRepository.findByEmail(loginDTO.getEmail());
         if (currentUser != null) {
             String password = loginDTO.getPassword();
             String encodedPassword = currentUser.getPassword();
@@ -73,6 +75,38 @@ public class UserServiceImp implements UserService{
             }
         } else {
             return new UserResponse("Email Does Not Exist", false);
+        }
+    }
+
+
+    @Override
+    public UserResponse editUser(UserDTO userDTO) {
+        if (currentUser != null) {
+            User user = new User(
+                    userDTO.getUserID(),
+                    userDTO.getFirstName(),
+                    userDTO.getLastName(),
+                    currentUser.getEmail(),
+                    this.passwordEncoder.encode(userDTO.getPassword()),
+                    userDTO.getPhone(),
+                    userDTO.isEnrolledForPromo(),
+                    userDTO.getAddress(),
+                    userDTO.getCity(),
+                    userDTO.getState(),
+                    userDTO.getZip()
+                    //userDTO.isActive()
+            );
+            userRepository.delete(currentUser);
+            User testUser = userRepository.findByEmail(userDTO.getEmail());
+            if (testUser == null) {
+                //boolean active = !user.isActive();
+                userRepository.save(user);
+                return new UserResponse("Edit Success", true);
+            } else {
+                return new UserResponse("Edit Failed", false);
+            }
+        } else {
+            return new UserResponse("Email does not exist", false);
         }
     }
 

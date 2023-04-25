@@ -1,50 +1,36 @@
-/*package org.example.model;
+package org.example.model;
 
 import jakarta.persistence.*;
+import org.example.model.Movie;
+import org.example.model.Showroom;
+import org.example.model.Showtime;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-
 @Entity
 @Table(name = "Screening")
 public class Screening {
 
     @EmbeddedId
-    private ScreeningPK screeningPK;
+    private ScreeningId id;
 
-    @Column(name = "seatsAvailable")
+    @Column(name = "seats_available")
     private Integer seatsAvailable;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "movieID", referencedColumnName = "movieID", insertable = false, updatable = false)
-    private Movie movie;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "showroomID", referencedColumnName = "showroomID", insertable = false, updatable = false)
-    private Showroom showroom;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "showtimeID", referencedColumnName = "showtimeID", insertable = false, updatable = false)
-    private Showtime showtime;
 
     public Screening() {}
 
-    public Screening(LocalDate showDate, Integer showtimeID, Integer showroomID, Integer seatsAvailable, Movie movie, Showroom showroom, Showtime showtime) {
-        this.screeningPK = new ScreeningPK(showDate, showtimeID, showroomID);
+    public Screening(LocalDate showDate, Integer showroomId, Integer seatsAvailable) {
+        this.id = new ScreeningId(showDate, showroomId);
         this.seatsAvailable = seatsAvailable;
-        this.movie = movie;
-        this.showroom = showroom;
-        this.showtime = showtime;
     }
 
-
-    public ScreeningPK getScreeningPK() {
-        return screeningPK;
+    public ScreeningId getId() {
+        return id;
     }
 
-    public void setScreeningPK(ScreeningPK screeningPK) {
-        this.screeningPK = screeningPK;
+    public void setId(ScreeningId id) {
+        this.id = id;
     }
 
     public Integer getSeatsAvailable() {
@@ -55,58 +41,30 @@ public class Screening {
         this.seatsAvailable = seatsAvailable;
     }
 
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
-    public Showroom getShowroom() {
-        return showroom;
-    }
-
-    public void setShowroom(Showroom showroom) {
-        this.showroom = showroom;
-    }
-
-    public Showtime getShowtime() {
-        return showtime;
-    }
-
-    public void setShowtime(Showtime showtime) {
-        this.showtime = showtime;
-    }
-
     @Override
     public String toString() {
         return "Screening{" +
-                "screeningPK=" + screeningPK +
+                "id=" + id +
                 ", seatsAvailable=" + seatsAvailable +
                 '}';
     }
 }
 
 @Embeddable
-class ScreeningPK implements Serializable {
+class ScreeningId implements Serializable {
 
-    @Column(name = "showDate")
+    @Column(name = "show_date")
     private LocalDate showDate;
 
-    @Column(name = "showtimeID")
-    private Integer showtimeID;
+    @Column(name = "showroom_id")
+    private Integer showroomId;
 
-    @Column(name = "showroomID")
-    private Integer showroomID;
-
-    public ScreeningPK() {
+    public ScreeningId() {
     }
 
-    public ScreeningPK(LocalDate showDate, Integer showtimeID, Integer showroomID) {
+    public ScreeningId(LocalDate showDate, Integer showroomId) {
         this.showDate = showDate;
-        this.showtimeID = showtimeID;
-        this.showroomID = showroomID;
+        this.showroomId = showroomId;
     }
 
     public LocalDate getShowDate() {
@@ -117,36 +75,20 @@ class ScreeningPK implements Serializable {
         this.showDate = showDate;
     }
 
-    public Integer getShowtimeID() {
-        return showtimeID;
+    public Integer getShowroomId() {
+        return showroomId;
     }
 
-    public void setShowtimeID(Integer showtimeID) {
-        this.showtimeID = showtimeID;
-    }
-
-    public Integer getShowroomID() {
-        return showroomID;
-    }
-
-    public void setShowroomID(Integer showroomID) {
-        this.showroomID = showroomID;
+    public void setShowroomId(Integer showroomId) {
+        this.showroomId = showroomId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ScreeningPK)) return false;
-        ScreeningPK that = (ScreeningPK) o;
+        if (!(o instanceof ScreeningId)) return false;
+        ScreeningId that = (ScreeningId) o;
         return Objects.equals(getShowDate(), that.getShowDate()) &&
-                Objects.equals(getShowtimeID(), that.getShowtimeID()) &&
-                Objects.equals(getShowroomID(), that.getShowroomID());
+                Objects.equals(getShowroomId(), that.getShowroomId());
     }
-
-    // hashcode
-    @Override
-    public int hashCode() {
-        return Objects.hash(getShowDate(), getShowtimeID(), getShowroomID());
-    }
-
-}*/
+}

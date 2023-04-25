@@ -1,30 +1,24 @@
-/*package org.example.model;
+package org.example.model;
+
+import jakarta.persistence.*;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Ticket")
 public class Ticket {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ticketID")
     private int ticketID;
 
     @ManyToOne
-    @JoinColumn(name = "bookingID", referencedColumnName = "bookingID")
+    @JoinColumn(name = "bookingID")
     private Booking booking;
 
     @ManyToOne
-    @JoinColumn(name = "typeID", referencedColumnName = "typeID")
+    @JoinColumn(name = "typeID")
     private TicketType ticketType;
-
-    public int getTicketID() {
-        return ticketID;
-    }
-
-    public void setTicketID(int ticketID) {
-        this.ticketID = ticketID;
-    }
 
     public Booking getBooking() {
         return booking;
@@ -41,14 +35,4 @@ public class Ticket {
     public void setTicketType(TicketType ticketType) {
         this.ticketType = ticketType;
     }
-
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "ticketID=" + ticketID +
-                ", booking=" + booking +
-                ", ticketType=" + ticketType +
-                '}';
-    }
 }
-*/

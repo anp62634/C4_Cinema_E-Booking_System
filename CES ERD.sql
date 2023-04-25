@@ -45,18 +45,18 @@ DROP TABLE IF EXISTS `mydb`.`User` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `userID` INT NOT NULL AUTO_INCREMENT,
-  `firstName` VARCHAR(45) NULL,
-  `lastName` VARCHAR(45) NULL,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+  `password` VARCHAR(255) NULL,
   `phone` VARCHAR(45) NULL,
-  `enrolledForPromo` TINYINT(1) NULL,
+  `enrolled_for_promo` TINYINT(1) NULL,
   `address` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
   `state` VARCHAR(45) NULL,
   `zip` VARCHAR(45) NULL,
-  `typeID` INT NOT NULL,
-  `statusID` INT NOT NULL,
+  `typeID` INT NOT NULL DEFAULT 2,
+  `statusID` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`userID`),
   INDEX `fk_User_UserType1_idx` (`typeID` ASC) VISIBLE,
   INDEX `fk_User_Status1_idx` (`statusID` ASC) VISIBLE,
@@ -94,13 +94,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Account` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Account` (
-  `cardNo` VARCHAR(16) NOT NULL,
+  `card_no` VARCHAR(16) NOT NULL,
   `CVV` INT NULL,
-  `cardType` VARCHAR(45) NULL,
+  `card_type` VARCHAR(45) NULL,
   `expiration` DATE NULL,
   `userID` INT NOT NULL,
   `billingID` INT NOT NULL,
-  PRIMARY KEY (`cardNo`),
+  PRIMARY KEY (`card_no`),
   INDEX `fk_Account_User_idx` (`userID` ASC) VISIBLE,
   INDEX `fk_Account_BillingAddress1_idx` (`billingID` ASC) VISIBLE,
   CONSTRAINT `fk_Account_User`
@@ -125,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Promotion` (
   `promoID` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `discount` DECIMAL(3,2) NULL,
+  `promo_code` VARCHAR(45) NULL,
   PRIMARY KEY (`promoID`))
 ENGINE = InnoDB;
 
@@ -136,7 +137,7 @@ DROP TABLE IF EXISTS `mydb`.`MPAA` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`MPAA` (
   `mpaaID` INT NOT NULL AUTO_INCREMENT,
-  `mpaaRating` VARCHAR(45) NOT NULL,
+  `mpaa_rating` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`mpaaID`))
 ENGINE = InnoDB;
 
@@ -155,9 +156,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Movie` (
   `producer` VARCHAR(45) NULL,
   `synopsis` VARCHAR(45) NULL,
   `reviews` VARCHAR(45) NULL,
-  `trailerPic` VARCHAR(45) NULL,
-  `trailerVid` VARCHAR(45) NULL,
+  `poster` VARCHAR(45) NULL,
+  `trailer` VARCHAR(45) NULL,
   `runtime` DECIMAL(3,2) NULL,
+  `showing` TINYINT(1) NULL,
   `mpaaID` INT NOT NULL,
   PRIMARY KEY (`movieID`),
   INDEX `fk_Movie_MPAA1_idx` (`mpaaID` ASC) VISIBLE,
@@ -189,7 +191,7 @@ DROP TABLE IF EXISTS `mydb`.`Showtime` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Showtime` (
   `showtimeID` INT NOT NULL AUTO_INCREMENT,
-  `showTime` TIME NOT NULL,
+  `show_time` TIME NOT NULL,
   PRIMARY KEY (`showtimeID`))
 ENGINE = InnoDB;
 
@@ -200,12 +202,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Screening` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Screening` (
-  `showDate` DATE NOT NULL,
+  `show_date` DATE NOT NULL,
   `showtimeID` INT NOT NULL,
   `showroomID` INT NOT NULL,
-  `seatsAvailable` INT NULL,
+  `seats_available` INT NULL,
   `movieID` INT NOT NULL,
-  PRIMARY KEY (`showDate`, `showtimeID`, `showroomID`),
+  PRIMARY KEY (`show_date`, `showtimeID`, `showroomID`),
   INDEX `fk_Screening_Movie1_idx` (`movieID` ASC) VISIBLE,
   INDEX `fk_Screening_Showroom1_idx` (`showroomID` ASC) VISIBLE,
   INDEX `fk_Screening_Showtime1_idx` (`showtimeID` ASC) VISIBLE,
@@ -234,19 +236,19 @@ DROP TABLE IF EXISTS `mydb`.`Booking` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Booking` (
   `bookingID` INT NOT NULL AUTO_INCREMENT,
-  `numTickets` INT NULL,
+  `num_tickets` INT NULL,
   `price` DECIMAL(10,2) NULL,
   `userID` INT NOT NULL,
   `promoID` INT NULL,
-  `cardNo` VARCHAR(16) NOT NULL,
-  `showDate` DATE NOT NULL,
+  `card_no` VARCHAR(16) NOT NULL,
+  `show_date` DATE NOT NULL,
   `showtimeID` INT NOT NULL,
   `showroomID` INT NOT NULL,
   PRIMARY KEY (`bookingID`),
   INDEX `fk_Booking_User1_idx` (`userID` ASC) VISIBLE,
   INDEX `fk_Booking_Promotion1_idx` (`promoID` ASC) VISIBLE,
-  INDEX `fk_Booking_Account1_idx` (`cardNo` ASC) VISIBLE,
-  INDEX `fk_Booking_Screening1_idx` (`showDate` ASC, `showtimeID` ASC, `showroomID` ASC) VISIBLE,
+  INDEX `fk_Booking_Account1_idx` (`card_no` ASC) VISIBLE,
+  INDEX `fk_Booking_Screening1_idx` (`show_date` ASC, `showtimeID` ASC, `showroomID` ASC) VISIBLE,
   CONSTRAINT `fk_Booking_User1`
     FOREIGN KEY (`userID`)
     REFERENCES `mydb`.`User` (`userID`)
@@ -258,13 +260,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Booking` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Booking_Account1`
-    FOREIGN KEY (`cardNo`)
-    REFERENCES `mydb`.`Account` (`cardNo`)
+    FOREIGN KEY (`card_no`)
+    REFERENCES `mydb`.`Account` (`card_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Booking_Screening1`
-    FOREIGN KEY (`showDate` , `showtimeID` , `showroomID`)
-    REFERENCES `mydb`.`Screening` (`showDate` , `showtimeID` , `showroomID`)
+    FOREIGN KEY (`show_date` , `showtimeID` , `showroomID`)
+    REFERENCES `mydb`.`Screening` (`show_date` , `showtimeID` , `showroomID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -277,7 +279,7 @@ DROP TABLE IF EXISTS `mydb`.`TicketType` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`TicketType` (
   `typeID` INT NOT NULL AUTO_INCREMENT,
-  `typeName` VARCHAR(45) NOT NULL,
+  `type_name` VARCHAR(45) NOT NULL,
   `price` DECIMAL(5,2) NOT NULL,
   PRIMARY KEY (`typeID`))
 ENGINE = InnoDB;

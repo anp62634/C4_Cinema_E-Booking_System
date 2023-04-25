@@ -1,15 +1,18 @@
-/*package org.example.model;
+
+package org.example.model;
 
 import jakarta.persistence.*;
+import org.example.model.Ticket;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Booking")
 public class Booking {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bookingID")
-    private int bookingID;
+    private Integer bookingID;
 
     @Column(name = "numTickets")
     private int numTickets;
@@ -17,43 +20,51 @@ public class Booking {
     @Column(name = "price")
     private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "userID")
-    private User user;
+    @Column(name = "userId")
+    private Integer userId;
 
-    @ManyToOne
-    @JoinColumn(name = "promoID")
-    private Promotion promotion;
+    @Column(name = "promoId")
+    private Integer promoId;
 
-    @ManyToOne
-    @JoinColumn(name = "cardNo")
-    private Account account;
+    @Column(name = "cardNo")
+    private String cardNo;
 
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "showDate", referencedColumnName = "showDate"),
-            @JoinColumn(name = "showtimeID", referencedColumnName = "showtimeID"),
-            @JoinColumn(name = "showroomID", referencedColumnName = "showroomID")
-    })
-    private Screening screening;
+    @Column(name = "showDate")
+    private String showDate;
+
+    @Column(name = "showtimeID")
+    private int showtimeID;
+
+    @Column(name = "showroomID")
+    private int showroomID;
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "bookingID")
+    private List<Ticket> tickets;
+
 
     public Booking() {
     }
 
-    public Booking(int numTickets, double price, User user, Promotion promotion, Account account, Screening screening) {
+    public Booking(int numTickets, double price, Integer userId, Integer promoId, String cardNo, String showDate, Integer showtimeID, Integer showroomID, List<Ticket> tickets) {
         this.numTickets = numTickets;
         this.price = price;
-        this.user = user;
-        this.promotion = promotion;
-        this.account = account;
-        this.screening = screening;
+        this.userId = userId;
+        this.promoId = promoId;
+        this.cardNo = cardNo;
+        this.showDate = showDate;
+        this.showtimeID = showtimeID;
+        this.showroomID = showroomID;
+        this.tickets = tickets;
     }
+
 
     public int getBookingID() {
         return bookingID;
     }
 
-    public void setBookingID(int bookingID) {
+    public void setBookingID(Integer bookingID) {
         this.bookingID = bookingID;
     }
 
@@ -73,50 +84,60 @@ public class Booking {
         this.price = price;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Promotion getPromotion() {
-        return promotion;
+    public int getPromoId() {
+        return promoId;
     }
 
-    public void setPromotion(Promotion promotion) {
-        this.promotion = promotion;
+    public void setPromoId(Integer promoId) {
+        this.promoId = promoId;
     }
 
-    public Account getAccount() {
-        return account;
+    public String getCardNo() {
+        return cardNo;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
     }
 
-    public Screening getScreening() {
-        return screening;
+    public String getShowDate() {
+        return showDate;
     }
 
-    public void setScreening(Screening screening) {
-        this.screening = screening;
+    public void setShowDate(String showDate) {
+        this.showDate = showDate;
     }
 
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "bookingID=" + bookingID +
-                ", numTickets=" + numTickets +
-                ", price=" + price +
-                ", user=" + user +
-                ", promotion=" + promotion +
-                ", account=" + account +
-                ", screening=" + screening +
-                '}';
+    public int getShowtimeID() {
+        return showtimeID;
+    }
+
+    public void setShowtimeID(Integer showtimeID) {
+        this.showtimeID = showtimeID;
+    }
+
+    public int getShowroomID() {
+        return showroomID;
+    }
+
+    public void setShowroomID(Integer showroomID) {
+        this.showroomID = showroomID;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }
 
- */

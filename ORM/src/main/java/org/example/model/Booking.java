@@ -1,4 +1,3 @@
-
 package org.example.model;
 
 import jakarta.persistence.*;
@@ -47,7 +46,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(int numTickets, double price, Integer userId, Integer promoId, String cardNo, String showDate, Integer showtimeID, Integer showroomID, List<Ticket> tickets) {
+    public Booking(Integer numTickets, Double price, Integer userId, Integer promoId, String cardNo, String showDate, Integer showtimeID, Integer showroomID, List<Ticket> tickets) {
         this.numTickets = numTickets;
         this.price = price;
         this.userId = userId;
@@ -72,7 +71,7 @@ public class Booking {
         return numTickets;
     }
 
-    public void setNumTickets(int numTickets) {
+    public void setNumTickets(Integer numTickets) {
         this.numTickets = numTickets;
     }
 
@@ -80,7 +79,7 @@ public class Booking {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

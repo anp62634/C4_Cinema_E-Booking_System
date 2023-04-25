@@ -32,6 +32,13 @@ public class UserController {
         return ResponseEntity.ok(loginResponse);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/edit")
+    public ResponseEntity<?> editUser(@RequestBody UserDTO userDTO) {
+        UserResponse editResponse = userService.editUser(userDTO);
+        return ResponseEntity.ok(editResponse);
+    }
+
     @GetMapping("/getAll")
     public List<User> getAllUsers() {
         return userService.getAllUsers();

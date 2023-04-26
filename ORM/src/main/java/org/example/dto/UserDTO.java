@@ -19,8 +19,9 @@ public class UserDTO {
     private String state;
     private String zip;
     //private boolean active;
+    private String code;
 
-    public UserDTO(int userID, String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip/*, boolean active*/) {
+    public UserDTO(int userID, String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip, String code/*, boolean active*/) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,6 +33,7 @@ public class UserDTO {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.code = code;
         //this.active = active;
     }
 
@@ -133,6 +135,14 @@ public class UserDTO {
     /*public void setActive(boolean active) {
         this.active = active;
     }*/
+    
+    public String getCode() {
+        return this.code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     @Override
     public String toString() {

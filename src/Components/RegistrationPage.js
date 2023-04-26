@@ -20,14 +20,30 @@ function RegistrationPage() {
     const[zip, setZip]=useState('');
     const[checked, setChecked]=useState(false);
     const[enrolledForPromo, setEnrolledForPromo]=useState(0);
+    const[code, setCode]=useState('')
 
     const handleSubscription = () => {
         setChecked(!checked);
         setEnrolledForPromo(enrolledForPromo ? 0 : 1);
     }
+    
+     function GenerateVerifyCode(size) {
+        const AlphaNumericStr =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi" +
+            "jklmnopqrstuvxyz0123456789";
+        let s = "";
+        for (let i = 0; i < size; i++) {
+            // generating a random number using Math.random()
+            let ch = Math.floor(Math.random() * AlphaNumericStr.length);
+            // adding random character one by one at the end of s
+            s += AlphaNumericStr.charAt(ch);
+        }
+        return s;
+    }
 
     async function submit(e) {
         e.preventDefault();
+        let code = GenerateVerifyCode(size);
         try {
             await axios.post("http://localhost:8080/user/save", {
                 firstName: firstName,
@@ -40,6 +56,7 @@ function RegistrationPage() {
                 state: state,
                 zip: zip,
                 enrolledForPromo: enrolledForPromo
+                code: code
             }).then((res) => {
                 console.log(res.data);
                 if (res.data.message === "Registration Success") {

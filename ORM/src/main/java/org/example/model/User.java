@@ -41,6 +41,10 @@ public class User {
 
     @Column(name="zip")
     private String zip;
+    
+    @Column(name="verification_code", length = 6)
+    private String code;
+
 
     /*
     @ManyToOne
@@ -54,7 +58,7 @@ public class User {
     public User() {
     }
 
-    public User(int userID, String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip/*, boolean active*/) {
+    public User(int userID, String firstName, String lastName, String email, String password, String phone, boolean enrolledForPromo, String address, String city, String state, String zip, String code/*, boolean active*/) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -66,6 +70,7 @@ public class User {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.code = code;
         //this.active = active;
     }
 
@@ -156,6 +161,14 @@ public class User {
     public void setZip(String zip) {
         this.zip = zip;
     }
+    
+    public String getCode() {
+        return this.code;
+    }
+
+    public void setCode(String code) { this.code = code;}
+
+
 
     //public boolean isActive() { return active; }
 

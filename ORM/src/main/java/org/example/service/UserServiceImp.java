@@ -35,6 +35,7 @@ public class UserServiceImp implements UserService{
                 userDTO.getCity(),
                 userDTO.getState(),
                 userDTO.getZip()
+                userDTO.getCode()
                 //userDTO.isActive()
         );
         User testUser = userRepository.findByEmail(userDTO.getEmail());

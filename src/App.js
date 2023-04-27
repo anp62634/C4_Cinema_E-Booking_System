@@ -24,7 +24,7 @@ import Checkout from "./Components/Checkout/Checkout"
 
 function App() {
   // Checks if a user is logged in
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = useCallback(() => {
       setIsLoggedIn(true);

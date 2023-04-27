@@ -7,8 +7,27 @@ import SeatList from "./Seats/SeatList";
 import "../style.css";
 import Footer from "./Footer"
 
+const TicketPrice = [
+  {
+    typeid: 0,
+    ticketType: "Adult",
+    price: 12,
+  },
+  {
+    typeid: 1,
+    ticketType: "Senior",
+    price: 9,
+  },
+  {
+    typeid: 2,
+    ticketType: "Child",
+    price: 8,
+  }
+]
+
 export default function BookTickets() {
   const [movies, setMovies] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]);
     
   useEffect(()=>{
     fetch("http://localhost:8080/movie/getAll")
@@ -124,11 +143,25 @@ export default function BookTickets() {
 
             <div className="theater-layout">
                 <h1>Seat Selection</h1> 
-                <SeatList items={TheaterLayout.Seats} tickets={totalTickets}/>
+                <SeatList items={TheaterLayout.Seats} tickets={totalTickets} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/>
             </div>
             
-            <div className="movie-btn">
-              <Link to={`/booktickets/checkout`}><b>CHECKOUT</b></Link>
+            <div className="movie-info-col">
+              <div className="movie-btn">
+                <Link to={'/'}><b>CANCEL</b></Link>
+              </div>
+
+              {totalTickets !== 0 && (
+              <div className="movie-btn">
+                {selectedSeats.length === totalTickets && (
+                  <Link to={{ pathname: '/booktickets/checkout', movie: movie, selectedSeats: selectedSeats, TicketPrice: TicketPrice, adultCounter: adultCounter, seniorCounter: seniorCounter, childCounter: seniorCounter }}>
+                  <b>CHECKOUT</b>
+                </Link>
+
+                )}
+                
+              </div>
+              )}
             </div>
           </div>
         ))}

@@ -122,8 +122,8 @@ export default function BrowseMovies() {
                 <div className="search-list">
                     {/* Movies Being Shown */}
                     <div>
-                        {filteredList1.map((movie, index) => (
-                            <div className="search-listItem"><MovieCard items={movie} isDate={isDateSelected}/></div>
+                        {filteredList1.map((movie) => (
+                            <div key={movie.id} className="search-listItem"><MovieCard items={movie} isDate={isDateSelected}/></div>
                         ))}
 
                         {/* Movies Coming Soon */}

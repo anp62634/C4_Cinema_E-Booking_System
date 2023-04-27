@@ -4,7 +4,6 @@ import TrailerModal from "../TrailerModal";
 import "../style.css"
 
 export default function MovieCard(movie) {
-
   //Display for movies being shown
   return (
     <React.Fragment>

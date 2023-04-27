@@ -1,3 +1,35 @@
+.ShowCase {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    color: white;
+}
+  
+.ShowCase li {
+    margin: 0 12px;
+}
+
+.seat {
+    display: inline-block;
+    background: white;
+    border: solid black;
+    width: 20px;
+    height: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+.seat.selected {
+    background: #7bc47f;
+}
+  
+.seat.occupied {
+    background: rgb(169, 176, 172);
+}
+
 .seat-content {
     display: grid; 
     gap: 10px;
@@ -7,29 +39,33 @@
     padding: 10px;
 }
 
-.seat-item-na{
-    padding: 15px;
-    width: 50px;
-    color:black;
-    background-color: rgb(169, 176, 172);
-    border: solid;
-    border-radius: 10px;
+.seat-item{
+    background-color: white;
+    border: solid black;
+    width: 45px;
+    height: 55px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-.seat-item{
-    padding: 15px;
-    width: 50px;
-    color:black;
-    background-color: white;
-    border: solid;
-    border-radius: 10px;
+.seat-item-occupied {
+    background: rgb(169, 176, 172);
+    border: solid black;
+    width: 45px;
+    height: 55px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .seat-item-selected {
-    padding: 15px;
-    width: 50px;
-    color:black;
     background-color: lightgreen;
-    border: solid;
-    border-radius: 10px;
+    border: solid black;
+    width: 45px;
+    height: 55px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer;
 }

@@ -26,7 +26,7 @@ public class Movie {
     @Column(name = "producer")
     private String producer;
 
-    @Column(name = "synopsis")
+    @Column(name = "synopsis", columnDefinition = "longtext")
     private String synopsis;
 
     @Column(name = "reviews")
